@@ -1,0 +1,18 @@
+{% extends 'documentation/base.html'%}
+{% load static %}
+
+
+{% block content %}
+    <h1 class="text-center">{{ fields.categorybody.name }}</h1>
+    <p class="text-center">{{ fields.categorybody.description }}</p>
+    {% if fields.docsbody %}
+      {% for y in fields.docs%}
+        <h2><a href="{% url 'documentation:documentation' fields.categorybody.name y.id%}">{{ y.name }}</a><h2>
+          <p>{{ y.description }}</p>
+      {% endfor %}
+    {% endif %}
+    {% for x in paragraphes%}
+        <h2>{{ x.title }}</h2>
+        <p class="text-center">{{ x.contenu }}</p>
+    {% endfor %}
+{% endblock %}

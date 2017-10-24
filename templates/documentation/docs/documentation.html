@@ -1,0 +1,11 @@
+{% extends 'documentation/base.html'%}
+{% load static %}
+
+
+{% block content %}
+    <h1 class="text-center">{{ doc.name }}</h1>
+    {% for x in paragraphes%}
+        <h2>{{ x.title }}</h2>
+        <p class="text-center">{{ x.contenu }}</p>
+    {% endfor %}
+{% endblock %}

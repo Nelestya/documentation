@@ -1,0 +1,41 @@
+<div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+  <div>
+    <h4>Menu</h4>
+    <button class="close-button" aria-label="Close menu" type="button" data-close="">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <ul class="vertical menu menucolor">
+{# list les application par piorité #}
+{% if fields.category %}
+  {% for x in fields.category %}
+
+    <li>
+      <a href="{% url 'documentation:category' x.name %}">{{ x.name }}</a>
+      <ul>
+        {% for y in fields.docs%}
+          {% if y.category.name == x.name %}
+            <li>
+              <a href="{% url 'documentation:documentation' x.name y.id%}">{{ y.name }}</a>
+            </li>
+
+        {% endif %}
+      {% endfor %}
+      </ul>
+    </li>
+
+  {% endfor %}
+{% endif %}
+    </ul>
+  </div>
+  <div class="off-canvas-content" data-off-canvas-content>
+  </div>
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="menu-text">
+            <span data-toggle="offCanvas">Menu</span>
+          </li>
+        </ul>
+      </div>
+    </div>
